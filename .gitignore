@@ -1,0 +1,11 @@
+/vendor
+/node_modules
+/public/storage
+logs/*
+!.gitkeep
+node_modules/
+bower_components/
+tmp
+.DS_Store
+.idea
+.env
