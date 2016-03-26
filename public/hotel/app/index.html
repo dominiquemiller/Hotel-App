@@ -9,24 +9,38 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <!-- <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css"> -->
   <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+        <div flex="25">
+          <h2>
+            <span>Chez Jaime HOTEL</span>
+          </h2>
+        </div>
+        <div flex="75" layout layout-align="end center">
+          <a href="#/view1"><md-button aria-label="Go Back">
+            View 1
+          </md-button></a>
+          <a href="#/view2"><md-button aria-label="Learn More">
+            View 2
+          </md-button></a>
+          <a href="#/room_admin"><md-button aria-label="Go Back">
+            Room Admin
+          </md-button></a>
+        </div>
+      </div>
+    </md-toolbar>
+
 
   <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -36,8 +50,12 @@
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
+  <script src="room_admin/room_admin.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-material/angular-material.js"></script>
 </body>
 </html>

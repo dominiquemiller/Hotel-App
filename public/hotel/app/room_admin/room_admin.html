@@ -1,0 +1,72 @@
+<md-content>
+  <div layout="row" layout-align="center center">
+    <h1>Room Admin Panel</h1>
+  </div>
+
+  <div layout="row">
+    <div flex="50">
+      <form name="roomType" layout="column" layout-align="center center" class="md-inline-form">
+        <h1>Create new room type:</h1>
+        <md-input-container>
+          <input required ng-model="new_type.name" type="text" placeholder="Room Name">
+        </md-input-container>
+
+        <md-input-container>
+          <input ng-model="new_type.short_name" type="text" placeholder="Short Name">
+        </md-input-container>
+
+        <md-input-container>
+          <input ng-model="new_type.base_price" type="text" placeholder="Base Price">
+        </md-input-container>
+
+        <md-input-container>
+          <input ng-model="new_type.base_availability" type="text" placeholder="Base Availability">
+        </md-input-container>
+
+        <md-input-container>
+          <input ng-model="new_type.max_occupancy" type="text" placeholder="Max Occupancy">
+        </md-input-container>
+        <md-button ng-click="create()" class="md-raised">Create</md-button>
+      </form>
+    </div>
+
+    <div flex=50>
+      <div layout="column" layout-align="center center" class="md-inline-form">
+        <h1>Set price for room type:</h1>
+        <div layout="column" layout-align="start center">
+          <a href="" ng-repeat="room_type in room_types"
+                     ng-class="{active: $index==selected_idx}"
+                     ng-click="select_type($index)">{{room_type.name}}</a>
+        </div>
+        <form ng-if="selected_idx >= 0">
+          <!-- need to refactor using material calendar! -->
+          <h3>Set price for {{selected_type.name}}</h3>
+          <md-input-container>
+            <label for="start_dt">Start Date</label>
+            <input input-date type="text"
+                              name="start date"
+                              ng-model="update_data.start_dt"
+                              on-set="onStartSet()">
+          </md-input-container>
+
+          <md-input-container>
+            <label for="end_dt">End Date</label>
+            <input input-date type="text"
+                              name="end date"
+                              ng-model="update_data.end_dt"
+                              on-set="onEndSet()">
+          </md-input-container>
+
+          <md-input-container>
+            <label for="rate">Rate</label>
+            <input type="text" ng-model="update_data.price">
+          </md-input-container>
+
+          <md-button type="button" ng-click="setPrice()" class="md-raised">Create</md-button>
+        </form>
+        <div ng-if="message != null" layout layout-align="center center">
+          <p>{{message}}</p>
+        </div>
+      </div>
+    </div>
+</md-content>
