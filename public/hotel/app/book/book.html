@@ -1,0 +1,33 @@
+<div layout="row" layout-align="center center">
+  <h1>Search your room</h2>
+</div>
+<div layout="row">
+  <div flex="50">
+    <form>
+      <md-input-container>
+        <label for="start_dt">Check-in Date</label>
+        <input input-date type="text" ng-model="search_param.start_dt" format="d-m-yyyy">
+      </md-input-container>
+      <md-input-container>
+        <label for="end_dt">Check-out Date</label>
+        <input input-date type="text" ng-model="search_param.end_dt" format="d-m-yyyy">
+      </md-input-container>
+
+      <label for="occupancy">Persons</label>
+      <select type="text" ng-model="search_param.min_occupancy">
+        <option ng-repeat="value in select_occupancy" value="{{value}}">{{value}}</option>
+      </select>
+
+      <md-button ng-click="search()">Search</md-button>
+    </form>
+  </div>
+
+  <div flex="50">
+    <div ng-repeat="room_type in available_room_types">
+      <div>
+        <span>{{room_type.name}}</span>
+        <p> Total Price: {{room_type.total_price}}</p>
+      </div>
+      <a href="" ng-click="book($index)">Book This</a>
+    </div>
+  </div>

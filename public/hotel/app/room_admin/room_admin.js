@@ -49,12 +49,14 @@ angular.module('myApp.roomAdmin', ['ngRoute'])
     };
     //set price for room
     $scope.setPrice = function(){
-      $http.post('/adminapi/room_type', $scope.update_data).then(function(response){
+      console.log($scope.update_data);
+      $http.post('/adminapi/setpriceinrange', $scope.update_data).then(function(response){
         $scope.selected_idx = -1;
         $scope.selected_type = null;
         $scope.update_data = {};
 
-        $scope.message = response;
+        $scope.message = response.data;
+        console.log(response);
       });
     };
   });

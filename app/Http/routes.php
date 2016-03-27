@@ -15,7 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Admin route group needed by hotel owner
+// Hotel Owner Dashboard endpoints
 Route::group(['prefix' => 'adminapi'], function() {
   Route::resource('room_type', 'RoomTypeController');
+  Route::post('setpriceinrange', 'RoomCalendarController@setPriceInRangeForRoomType');
+});
+// Customer search endpoint for hotel room
+Route::group(['prefix' => 'api'], function() {
+  Route::post('searchavailabilty', 'RoomCalendarController@searchAvailabilty');
 });
