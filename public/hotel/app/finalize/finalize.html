@@ -1,0 +1,26 @@
+<div>
+  <div flex="50" ng-if="!reser_done">
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Booking Recap</span>
+        </md-card-title-text>
+        <md-card-title-media>
+          <div class="md-media-lg card-media">
+            <p>Check-in : {{ start_dt }}</p>
+            <p>Check-out : {{ end_dt }}</p>
+            <p>Guests : {{ occupancy }}</p>
+            <p>Room : {{ room_info.name }}</p>
+            <p>Total Price : {{ room_info.total_price }}</p>
+          </div>
+        </md-card-title-media>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+  <div flex="50" ng-if="!reser_done">
+  </div>
+</div>

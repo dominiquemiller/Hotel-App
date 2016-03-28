@@ -8,8 +8,22 @@ angular.module('myApp', [
   'myApp.view2',
   'myApp.roomAdmin',
   'myApp.version',
-  'myApp.book'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+  'myApp.book',
+  'myApp.finalize'
+])
+  .config(['$routeProvider', function($routeProvider) {
+    $routeProvider.otherwise({redirectTo: '/view1'});
+  }])
+  
+  .service('ReservationService', function(){
+    var srv = this;
+
+    srv.reservationTable = {};
+    srv.setValue = function(key, value) {
+      srv.reservationTable[key] = value;
+    };
+    srv.getValue = function(key) {
+      return srv.reservationTable[key];
+    };
+
+  });
