@@ -1,26 +1,79 @@
-<div>
-  <div flex="50" ng-if="!reser_done">
+<div layout="row">
+  <div flex="50" ng-if="!reservation_done">
     <md-card>
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">Booking Recap</span>
         </md-card-title-text>
-        <md-card-title-media>
-          <div class="md-media-lg card-media">
-            <p>Check-in : {{ start_dt }}</p>
-            <p>Check-out : {{ end_dt }}</p>
-            <p>Guests : {{ occupancy }}</p>
-            <p>Room : {{ room_info.name }}</p>
-            <p>Total Price : {{ room_info.total_price }}</p>
-          </div>
-        </md-card-title-media>
       </md-card-title>
-      <md-card-actions layout="row" layout-align="end center">
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
-      </md-card-actions>
+      <md-card-content>
+        <div class="md-media-lg card-media">
+          <p>Check-in : {{ start_dt }}</p>
+          <p>Check-out : {{ end_dt }}</p>
+          <p>Guests : {{ occupancy }}</p>
+          <p>Room : {{ room_info.name }}</p>
+          <p>Total Price : {{ room_info.total_price }}</p>
+        </div>
+      </md-card-content>
     </md-card>
   </div>
-  <div flex="50" ng-if="!reser_done">
+  <div flex="50" ng-if="!reservation_done">
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-heading">Customer Info</span>
+        <md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <form novalidate name="customerInfo">
+          <md-input-container>
+            <label>First Name</label>
+            <input required type="text" ng-model="customer.firstName">
+          </md-input-container>
+          <md-input-container>
+            <label>Last Name</label>
+            <input required type="text" ng-model="customer.lastName">
+          </md-input-container>
+          <md-input-container>
+            <label>Email</label>
+            <input required type="email" ng-model="customer.email">
+          </md-input-container>
+          <div>
+            <md-button ng-click="book()" class="md-raised md-primary">Book</md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
   </div>
+</div>
+
+<div layout layout-align="center center">
+  <md-card ng-if="reser_done">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-heading">Your Reservation</span>
+      </md-card-title-text>
+    <md-card-title>
+    <md-content>
+      <div layout="column" layout-align="center center">
+        <h3 class="md-heading">Cusomer Info</h3>
+        <p>First Name: {{ reservationInfo.firstName }}</p>
+        <p>Last Name: {{ reservationInfo.lastName }}</p>
+        <p>Email: {{ reservationInfo.email }}</p>
+      </div>
+      <div layout="column" layout-align="center center">
+        <h3 class="md-heading">Reservation Info</h3>
+        <p>Check-In: {{ reservationInfo.checkIn }}</p>
+        <p>Check-Out: {{ reservationInfo.checkOut }}</p>
+        <p>Guests: {{ reservationInfo.occupancy }}</p>
+        <p>Total Price: {{ reservationInfo.totalPrice }}</p>
+      </div>
+      <div layout="column" layout-align="center center">
+        <h3 class="md-heading">Per Night Info</h3>
+        <p ng-repeat="night in reservationInfo.nights">
+          Day {{ night.day }} - Rate: {{ night.rate }}
+        </p>
+      </div>
+    </md-content>
+  </md-card>
 </div>

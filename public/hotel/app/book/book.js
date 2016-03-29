@@ -10,9 +10,8 @@ angular.module('myApp.book', ['ngRoute'])
   }])
 
   .controller('BookController', function(ReservationService, $scope, $http, $location){
-        $scope.Reservation = ReservationService;
+        $scope.resServ = ReservationService;
         $scope.select_occupancy = [1, 2, 3, 4, 5];
-        $scope.available_room_types;
         $scope.search_param = {};
 
         $scope.search = function(){
@@ -21,12 +20,12 @@ angular.module('myApp.book', ['ngRoute'])
             console.log(response.data);
           });
         };
-
+        // Store book info in service for finalize.js to retrieve
         $scope.book = function(id) {
-          $scope.Reservation.setValue('start_dt', $scope.search_param.start_dt);
-          $scope.Reservation.setValue('end_dt', $scope.search_param.end_dt);
-          $scope.Reservation.setValue('occupancy', $scope.search_param.min_occupancy);
-          $scope.Reservation.setValue('room_info', $scope.search_param.room_types[id]);
+          $scope.resServ.setValue('start_dt', $scope.search_param.start_dt);
+          $scope.resServ.setValue('end_dt', $scope.search_param.end_dt);
+          $scope.resServ.setValue('occupancy', $scope.search_param.min_occupancy);
+          $scope.resServ.setValue('room_info', $scope.search_param.room_types[id]);
 
           console.log($scope.Reservation);
 
