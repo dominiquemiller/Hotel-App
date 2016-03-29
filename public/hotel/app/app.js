@@ -4,8 +4,6 @@
 angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
-  'myApp.view1',
-  'myApp.view2',
   'myApp.roomAdmin',
   'myApp.version',
   'myApp.book',
@@ -16,7 +14,7 @@ angular.module('myApp', [
   }])
 
   .service('ReservationService', function(){
-    
+
 
     var reservationTable = {};
 
