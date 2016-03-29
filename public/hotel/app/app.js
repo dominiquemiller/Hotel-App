@@ -14,16 +14,18 @@ angular.module('myApp', [
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/view1'});
   }])
-  
+
   .service('ReservationService', function(){
-    var srv = this;
+    
 
-    srv.reservationTable = {};
-    srv.setValue = function(key, value) {
-      srv.reservationTable[key] = value;
-    };
-    srv.getValue = function(key) {
-      return srv.reservationTable[key];
-    };
+    var reservationTable = {};
 
+    return {
+      setValue: function(key, value) {
+        reservationTable[key] = value;
+      },
+      getValue: function(key) {
+        return reservationTable[key];
+      }
+    };
   });

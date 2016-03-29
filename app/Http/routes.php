@@ -22,5 +22,5 @@ Route::group(['prefix' => 'adminapi'], function() {
 });
 // Customer search endpoint for hotel room
 Route::group(['prefix' => 'api'], function() {
-  Route::post('searchavailabilty', 'RoomCalendarController@searchAvailabilty');
+  Route::post('searchavailability', 'RoomCalendarController@searchAvailabilityForRoom');
 });

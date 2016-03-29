@@ -10,15 +10,16 @@ angular.module('myApp.finalize', ['ngRoute'])
     }])
 
     .controller('FinalizeController', function($scope, $http, $location, ReservationService){
-        $scope.resServ = ReservationService;
+
         $scope.customer = {};
+      
 
         //retrieve booking info
         $scope.getBookInfo = function(){
-          $scope.start_dt = $scope.resServe.getValue('start_dt');
-          $scope.end_dt = $scope.resServe.getValue('end_dt');
-          $scope.occupancy = $scope.resServe.getValue('occupancy');
-          $scope.room_info = $scope.resServe.getValue('room_info');
+          $scope.start_dt =   ReservationService.getValue('start_dt');
+          $scope.end_dt = ReservationService.getValue('end_dt');
+          $scope.occupancy = ReservationService.getValue('occupancy');
+          $scope.room_info = ReservationService.getValue('room_info');
 
           if(!$scope.room_info) {
             $location.path('/path');

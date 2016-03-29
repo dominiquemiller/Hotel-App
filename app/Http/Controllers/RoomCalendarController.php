@@ -36,7 +36,7 @@ class RoomCalendarController extends Controller {
   }
 
 
-    public function searchAvailabilty(Request $request) {
+    public function searchAvailabilityForRoom(Request $request) {
       $start_dt = Carbon::createFromFormat('d-m-Y', $request['start_dt'])->toDateTimeString();
       $end_dt =  Carbon::createFromFormat('d-m-Y', $request['end_dt'])->toDateTimeString();
 
