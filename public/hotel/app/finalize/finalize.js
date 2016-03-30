@@ -12,7 +12,7 @@ angular.module('myApp.finalize', ['ngRoute'])
     .controller('FinalizeController', function($scope, $http, $location, ReservationService){
 
         $scope.customer = {};
-      
+
 
         //retrieve booking info
         $scope.getBookInfo = function(){
@@ -28,7 +28,7 @@ angular.module('myApp.finalize', ['ngRoute'])
         };
 
         $scope.getBookInfo();
-
+        //booking info and customer object
         $scope.book = function(){
             var bookingInfo = {
               'customer': $scope.customer,
@@ -37,7 +37,7 @@ angular.module('myApp.finalize', ['ngRoute'])
               'end_dt': $scope.end_dt,
               'occupancy': $scope.occupancy
             };
-
+            
             $http.post('/api/createreservation', bookingInfo).then(function(response){
               $scope.reser_done = true;
               $scope.reservationInfo = response.data;
