@@ -42,7 +42,7 @@ angular.module('myApp.finalize', ['ngRoute'])
             };
             console.log(bookingInfo);
             $http.post('/api/createreservation', bookingInfo).then(function(response){
-              $scope.reser_done = true;
+              $scope.reservation_done = true;
               $scope.reservationInfo = response.data;
               console.log(response);
             });
