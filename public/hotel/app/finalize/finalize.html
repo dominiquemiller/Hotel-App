@@ -28,11 +28,11 @@
         <form novalidate name="customerInfo">
           <md-input-container>
             <label>First Name</label>
-            <input required type="text" ng-model="customer.firstName">
+            <input required type="text" ng-model="customer.first_name">
           </md-input-container>
           <md-input-container>
             <label>Last Name</label>
-            <input required type="text" ng-model="customer.lastName">
+            <input required type="text" ng-model="customer.last_name">
           </md-input-container>
           <md-input-container>
             <label>Email</label>
@@ -47,7 +47,7 @@
   </div>
 </div>
 
-<div layout layout-align="center center">
+<div layout="column" layout-align="center center">
   <md-card ng-if="reser_done">
     <md-card-title>
       <md-card-title-text>
@@ -57,16 +57,16 @@
     <md-content>
       <div layout="column" layout-align="center center">
         <h3 class="md-heading">Cusomer Info</h3>
-        <p>First Name: {{ reservationInfo.firstName }}</p>
-        <p>Last Name: {{ reservationInfo.lastName }}</p>
-        <p>Email: {{ reservationInfo.email }}</p>
+        <p>First Name: {{ reservationInfo.customer.first_name }}</p>
+        <p>Last Name: {{ reservationInfo.customer.last_name }}</p>
+        <p>Email: {{ reservationInfo.customer.email }}</p>
       </div>
       <div layout="column" layout-align="center center">
         <h3 class="md-heading">Reservation Info</h3>
-        <p>Check-In: {{ reservationInfo.checkIn }}</p>
-        <p>Check-Out: {{ reservationInfo.checkOut }}</p>
+        <p>Check-In: {{ reservationInfo.checkin }}</p>
+        <p>Check-Out: {{ reservationInfo.checkout }}</p>
         <p>Guests: {{ reservationInfo.occupancy }}</p>
-        <p>Total Price: {{ reservationInfo.totalPrice }}</p>
+        <p>Total Price: {{ reservationInfo.total_price }}</p>
       </div>
       <div layout="column" layout-align="center center">
         <h3 class="md-heading">Per Night Info</h3>

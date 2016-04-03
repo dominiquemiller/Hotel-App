@@ -31,17 +31,20 @@ angular.module('myApp.finalize', ['ngRoute'])
         //booking info and customer object
         $scope.book = function(){
             var bookingInfo = {
-              'customer': $scope.customer,
-              'room_info': $scope.room_info,
+              'first_name': $scope.customer.first_name,
+              'last_name': $scope.customer.last_name,
+              'email': $scope.customer.email,
+              'id': $scope.room_info.id,
+              'total_price': $scope.room_info.total_price,
               'start_dt': $scope.start_dt,
               'end_dt': $scope.end_dt,
               'occupancy': $scope.occupancy
             };
-            
+            console.log(bookingInfo);
             $http.post('/api/createreservation', bookingInfo).then(function(response){
               $scope.reser_done = true;
               $scope.reservationInfo = response.data;
-              console.log($scope.reservationInfo);
+              console.log(response);
             });
         };
 

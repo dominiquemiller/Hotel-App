@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         'adminapi/room_type',
         'adminapi/setpriceinrange',
-        'api/searchavailability'
+        'api/searchavailability',
+        'api/createreservation'
     ];
 }

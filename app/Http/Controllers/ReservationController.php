@@ -14,30 +14,39 @@ use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
-  public function createReservation(Request $request) {
+  public function createReservations(Request $request) {
 
-      $room_info = $request['room_info'];
+      $start_dt = Carbon::createFromFormat('d-m-Y', $request['start_dt'])->toDateString();
+      $end_dt = Carbon::createFromFormat('d-m-Y', $request['end_dt'])->toDateString();
 
-      $start_dt = Carbon::createFormFormat('d-m-Y', $request['start_dt'])->toDateString();
-      $end_dt = Carbon::createFormFormat('d-m-Y', $request['end_dt'])->toDateString();
+      $customer = Customer::firstOrCreate(array('first_name'=>$request['first_name'],
+                                                'last_name'=>$request['last_name'],
+                                                'email'=>$request['email']));
 
-      $customer = Customer::firstOrCreate($request['customer']);
-
-      $reservation = Reservation::create();
-      $reservation->total_price = $room_info['total_price'];
-      $reservation->occupancy = $request['occupancy'];
-      $reservation->customer_id = $customer->id;
-      $reservation->checkin = $start_dt;
-      $reservation->checkout = $end_dt;
-
-      $reservation->save();
+      $reservation = Reservation::create(array('total_price' => $request['total_price'],
+                                               'occupancy' => $request['occupancy'],
+                                               'checkin' => $start_dt,
+                                               'checkout' => $end_dt,
+                                               'customer_id' => $customer->id));
 
       $date = $start_dt;
 
       while (strtotime($date) < strtotime($end_dt)) {
 
         $room_calendar = RoomCalendar::where('day', '=', $date)
-          ->where('room_type_id', '=', $room_info['id'])->first();
+          ->where('room_type_id', '=', $request['id'])->first();
+
+        $night = ReservationNight::create(array('day' => $date,
+                                                'rate' => $room_calendar->rate,
+                                                'room_type_id' => $request['id'],
+                                                'reservation_id' => $reservation->id));
+
+        $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+
       }
+
+      $nights = $reservation->nights;
+      $customer = $reservation->customer;
+      return $reservation;
   }
 }

@@ -15,7 +15,7 @@ class CreateTableReservationNights extends Migration
       Schema::create('reservation_nights', function ($table) {
             $table->increments('id');
             $table->float('rate');
-            $table->date('day');
+            $table->text('day');
             $table->integer('room_type_id');
             $table->integer('reservation_id');
             $table->date('created_at');

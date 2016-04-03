@@ -18,7 +18,7 @@ class CreateTableReservations extends Migration
             $table->integer('occupancy');
             $table->date('checkin');
             $table->date('checkout');
-            $table->string('customer_id');
+            $table->integer('customer_id');
             $table->date('created_at');
             $table->date('updated_at');
         });
