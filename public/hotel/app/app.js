@@ -7,12 +7,13 @@ angular.module('myApp', [
   'myApp.roomAdmin',
   'myApp.version',
   'myApp.book',
-  'myApp.finalize'
+  'myApp.finalize',
+  'myApp.payment'
 ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/view1'});
   }])
-
+  // saves reservation info for finalize controller
   .service('ReservationService', function(){
 
 
