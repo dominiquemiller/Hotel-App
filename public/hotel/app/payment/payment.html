@@ -1,0 +1,50 @@
+<div ng-if="!paid" layout layout-align="center center">
+  <md-card flex="50">
+    <md-content>
+      <form stripe-form="paywithStripe" name="payForm">
+        <md-input-container>
+          <label>Name on Card</label>
+          <input required type="text" id="name">
+        </md-input-container>
+        <md-input-container>
+          <label>Card Number</label>
+          <input required
+                 type="text"
+                 name="number"
+                 id="cardnumber"
+                 ng-model="number"
+                 payments-validate="card"
+                 payments-format="card"
+                 payments-type-model="type"
+                 ng-class="payForm.number.$card.type">
+        </md-input-container>
+        <md-input-container>
+          <label>Expiration Date</label>
+          <input required
+                 type="text"
+                 id="expiry"
+                 ng-model="expiry"
+                 payments-validate="expiry"
+                 payments-format="expiry">
+        </md-input-container>
+        <md-input-container>
+          <label>CVC</label>
+          <input required
+                 type="text"
+                 id="cvc"
+                 ng-model="cvc"
+                 payments-validate="cvc"
+                 payments-format="cvc"
+                 payments-type-model="type">
+        </md-input-container>
+        <div>
+          <md-button ng-if="loaded==true && paid==false" type='submit' class="md-warn">
+            Pay {{ reservation_info.total_price }}
+          </md-button>
+      </form>
+    </md-content>
+  <md-card>
+  <div ng-if="paid">
+    <h2> {{ message }} </h2>
+  </div>
+</div>
