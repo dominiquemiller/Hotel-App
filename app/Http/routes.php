@@ -23,6 +23,7 @@ Route::group(['prefix' => 'adminapi'], function() {
 // Customer search endpoint for hotel room
 Route::group(['prefix' => 'api'], function() {
   Route::get('reservation/{id}', 'ReservationController@show');
+  Route::post('payment', 'StripeController@pay');
   Route::post('searchavailability', 'RoomCalendarController@searchAvailabilityForRoom');
   Route::post('createreservation', 'ReservationController@createReservations');
 });

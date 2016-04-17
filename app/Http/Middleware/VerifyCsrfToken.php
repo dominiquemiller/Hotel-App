@@ -15,6 +15,7 @@ class VerifyCsrfToken extends BaseVerifier
         'adminapi/room_type',
         'adminapi/setpriceinrange',
         'api/searchavailability',
-        'api/createreservation'
+        'api/createreservation',
+        'api/payment'
     ];
 }
