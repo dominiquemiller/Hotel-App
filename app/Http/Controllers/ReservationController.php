@@ -49,4 +49,8 @@ class ReservationController extends Controller
       $customer = $reservation->customer;
       return $reservation;
   }
+
+  public function show($id) {
+    return Reservation::find($id);
+  }
 }
