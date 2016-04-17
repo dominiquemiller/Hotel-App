@@ -1,7 +1,7 @@
 <div ng-if="!paid" layout layout-align="center center">
   <md-card flex="50">
     <md-content>
-      <form stripe-form="paywithStripe" name="payForm">
+      <form stripe-form="handleStripe" name="payForm">
         <md-input-container>
           <label>Name on Card</label>
           <input required type="text" id="name">
@@ -38,7 +38,7 @@
                  payments-type-model="type">
         </md-input-container>
         <div>
-          <md-button ng-if="loaded==true && paid==false" type='submit' class="md-warn">
+          <md-button type='submit'>
             Pay {{ reservation_info.total_price }}
           </md-button>
       </form>

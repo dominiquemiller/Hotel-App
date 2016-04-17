@@ -9,22 +9,25 @@ angular.module('myApp.payment', ['ngRoute'])
         });
       }])
 
-      .controller('PaymentController', function($scope, $http, ReservationService, $location, $routeParams){
+      .controller('PaymentController', function($scope, $http, $q, ReservationService, $location, $routeParams){
 
           $scope.res_id = $routeParams.reserve_id;
           $scope.paid = false;
 
-          $scope.paywithStripe = function(status, response){
+          $scope.handleStripe = function(status, response){
             if(response.error) {
               $scope.paid = false;
               $scope.message = "Yo shit don't work!";
+              console.log(response.error);
             } else {
-              var $payInfo = {
+              var payInfo = {
                 'token': response.id,
                 'customer_id': $scope.reservation_info.customer_id,
                 'total': $scope.reservation_info.total_price
               };
+              console.log(payInfo);
             }
+            console.log(response + status);
           };
 
           $scope.getReservationData = function(){

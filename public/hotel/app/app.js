@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
+  'angularPayments',
   'myApp.roomAdmin',
   'myApp.version',
   'myApp.book',
